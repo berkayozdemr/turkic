@@ -5,3 +5,4 @@
 - **c. 960 CE**: Kara-Khanid Khanate converts to Islam
 - **1072**: Mahmud al-Kashgari writes the Dīwān Lughāt al-Turk; Yusuf Balasaguni's Kutadgu Bilig (1069)
 - **1370**: Timurid era: Chagatai becomes the literary language of Central Asia
+- **c. 1480**: Alisher Navoi's works define classical Chagatai literature
