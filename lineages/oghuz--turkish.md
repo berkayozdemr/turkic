@@ -4,3 +4,4 @@
 - **1299**: Osman I founds the Ottoman beylik (traditional date)
 - **1453**: Ottoman conquest of Constantinople
 - **1923**: Republic of Turkey proclaimed (29 October)
+- **1928**: Latin-based Turkish alphabet adopted
