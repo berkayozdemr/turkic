@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkic Git Graph</title>
+<meta name="description" content="The history of the Turkic peoples drawn as a git branch graph. Click any branch to read about that people.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e16; --bg2:#0f1520; --card:#0d131d; --line:#1b2230; --grid:#1b2230;
+  --text:#e8ebf2; --text2:#b6bdcb; --muted:#8b94a7; --faint:#5d6779;
+  --accent:#7ee787; --sel:#e8ebf2;
+  --mono:'JetBrains Mono','DejaVu Sans Mono',ui-monospace,monospace;
+  --sans:Inter,'Noto Sans',system-ui,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0a0e16}}
+:root[data-theme="dark"]{--bg:#0a0e16}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans)}
+body{background:radial-gradient(120% 70% at 15% 0%,#131b2b 0%,var(--bg) 60%) fixed var(--bg)}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 24px 64px}
+header h1{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.03em;margin:0 0 12px;line-height:1.05}
+header h1 em{font-style:normal;color:var(--accent)}
+.cmd{font-family:var(--mono);color:var(--muted);font-size:clamp(12px,1.6vw,15px);margin:0 0 10px;overflow-wrap:anywhere}
+.cmd b{color:var(--accent);font-weight:500}.cmd i{color:var(--faint);font-style:normal}
+.lede{color:var(--text2);font-size:16px;margin:0;max-width:62ch;line-height:1.5}
+.hint{display:inline-flex;gap:8px;align-items:center;margin-top:18px;font-size:13.5px;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 10px;background:#0d131dcc}
+.hint .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #7ee78722;animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px #7ee78700}}
+.graphcard{margin-top:26px;border:1px solid var(--line);border-radius:18px;background:#070b12b3;position:relative}
+.scroller{overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;border-radius:18px}
+#graph{display:block;width:100%;min-width:860px;height:auto;user-select:none}
+#graph text{font-family:var(--sans);fill:var(--text)}
+#graph .ev{font-size:12.8px;font-weight:500;fill:#dfe3ec;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+#graph .yr{font-family:var(--mono);font-weight:700;font-size:12px;stroke:var(--bg)}
+#graph .nm{font-size:18px;font-weight:650}
+#graph .ref{font-family:var(--mono);font-size:11.2px}
+#graph .grp{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:2.2px}
+#graph .tick{font-family:var(--mono);font-size:11px;fill:#6f7a8f}
+#graph .mono{font-family:var(--mono)}
+#graph .note{font-size:11.6px;font-style:italic;paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+#graph .hit{fill:transparent;cursor:pointer}
+#graph [data-l]{cursor:pointer;transition:opacity .25s}
+#graph .row .rowbg{fill:transparent;transition:fill .2s}
+#graph .row:hover .rowbg,#graph .row:focus-visible .rowbg,#graph .row.on .rowbg{fill:#ffffff0d}
+#graph .row:focus{outline:none}#graph .row:focus-visible .rowbg{stroke:var(--accent);stroke-width:1.5}
+#graph .legend{transition:opacity .25s}
+#graph.focus [data-l]:not(.on):not(.rel){opacity:.12}
+#graph.focus [data-l].rel{opacity:.5}
+#graph.focus .legend{opacity:.25}
+#graph.hov:not(.focus) [data-l]:not(.on):not(.rel){opacity:.3}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{font:500 13px var(--sans);color:var(--text2);background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:7px 12px 7px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip:hover,.chip[aria-current="true"]{color:var(--text);border-color:#334058}
+.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.chips .lbl{font:700 10.5px var(--mono);letter-spacing:2px;color:#6f7a8f;width:100%;margin-top:4px}
+footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;line-height:1.6}
+footer p{margin:0 0 10px;max-width:90ch}footer code{font-family:var(--mono);color:var(--accent)}
+/* panel */
+.scrim{position:fixed;inset:0;background:#0009;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
+.scrim.open{opacity:1;pointer-events:auto}
+aside{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);background:var(--bg2);border-left:1px solid var(--line);
+  transform:translateX(102%);transition:transform .3s cubic-bezier(.2,.8,.2,1);z-index:30;display:flex;flex-direction:column;
+  box-shadow:-30px 0 60px #0008}
+aside:not(.open){visibility:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),visibility 0s .3s}
+aside.open{transform:none}
+.ptop{display:flex;align-items:center;gap:6px;padding:12px 12px 10px 20px;border-bottom:1px solid var(--line)}
+.ptop .ref{font:500 12.5px var(--mono);color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ptop .ref b{font-weight:700}
+.ib{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text2);cursor:pointer;
+  display:grid;place-items:center;font-size:17px;line-height:1}
+.ib:hover{color:var(--text);border-color:#334058}
+.pbody{overflow-y:auto;padding:22px 22px 40px;flex:1}
+.bar{height:4px;border-radius:2px;width:56px;margin-bottom:16px}
+.pbody h2{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:0 0 4px;line-height:1.1}
+.endo{font-size:16px;font-weight:500;margin:0 0 14px}
+.grpline{font-size:13px;color:var(--muted);margin:0 0 18px;line-height:1.5}
+.grpline b{font-family:var(--mono);font-weight:700;letter-spacing:.5px}
+.k{font:700 10.5px var(--mono);letter-spacing:2px;color:#6f7a8f;margin:22px 0 7px;text-transform:uppercase}
+.where{font-size:15px;color:var(--text);margin:0;line-height:1.5}
+.brief{font-size:15px;color:var(--text2);line-height:1.62;margin:0}
+.log{font:13px/1.55 var(--mono);margin:0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);list-style:none}
+.log li{display:flex;gap:10px;padding:2px 0;color:var(--text2)}
+.log li span:first-child{flex:none}.log .y{font-weight:700;flex:none}
+.gal{display:grid;gap:14px}
+figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+figure .ph{background:#121a27;aspect-ratio:3/2;display:block;overflow:hidden}
+figure img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .4s}
+figure img.ld{opacity:1}
+figure .ph.err{display:grid;place-items:center;text-decoration:none;aspect-ratio:3/1}
+figure .ph.err img{display:none}
+figure .ph.err::after{content:"Image could not load here · open on Wikimedia Commons ↗";font:12px var(--mono);color:var(--muted);padding:0 16px;text-align:center}
+figcaption{padding:10px 12px 11px;font-size:13px;color:var(--text2);line-height:1.45}
+figcaption small{display:block;color:var(--faint);font-size:11.5px;margin-top:4px}
+figcaption small a{color:var(--muted)}
+.wl{display:flex;flex-direction:column;gap:8px}
+.wbtn{display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;padding:12px 14px;border-radius:12px;
+  border:1px solid var(--line);background:var(--card);font-size:14.5px;font-weight:600}
+.wbtn:hover{border-color:#334058}.wbtn span{color:var(--muted);font-weight:500;font-size:13px}
+.wbtn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}.wbtn.primary span{color:#3b4456}
+@media (min-width:721px){.scrim,.scrim.open{background:transparent;pointer-events:none}}
+@media (min-width:1100px){.wrap{transition:padding-right .3s}body.po .wrap{padding-right:484px;max-width:1640px}}
+@media (max-width:720px){
+  .wrap{padding:28px 16px 48px}
+  aside{top:auto;bottom:0;height:88%;width:100%;border-left:0;border-top:1px solid var(--line);border-radius:18px 18px 0 0;transform:translateY(102%)}
+  .pbody h2{font-size:26px}
+  .graphcard::after{content:"scroll →";position:absolute;right:10px;bottom:8px;font:11px var(--mono);color:var(--faint);pointer-events:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>The Turkic family, as a <em>git graph</em></h1>
+  <p class="cmd"><b>$</b> git log --graph --all <i># c. 2,000 years · 6 branches + the Old Uyghur line</i></p>
+  <p class="lede">One proto-language on the eastern steppe: forked, archived and merged across Eurasia. Each branch is a living (or archived) Turkic people.</p>
+  <div class="hint"><span class="dot"></span>Click any branch, name or event to open its details</div>
+</header>
+
+<div class="graphcard"><div class="scroller"><!--GRAPH--></div></div>
+
+<nav class="chips" id="chips" aria-label="All branches"></nav>
+
+<footer>
+  <p><code>turkic-states</code> · 2009 octopus merge: Azerbaijan, Kazakhstan, Kyrgyzstan and Türkiye form the Turkic Council (+ Uzbekistan 2019), since 2021 the Organization of Turkic States. Cooperation between sovereign states, not one state.</p>
+  <p>A teaching metaphor. Branches follow the linguistic classification of the languages (after Johanson 1998), not ancestry or politics. Fork points are approximate, mostly first attestations, and the order in which the Common Turkic branches split is not settled. “Siberian” is a regional grouping, not a proven single branch. Peoples mixed far more than a graph shows.</p>
+  <p>Images from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a> under the licence shown with each one. Text summarises the linked Wikipedia articles and the sources in the project's research notes. Source: <a href="https://github.com/berkayozdemr/turkic">github.com/berkayozdemr/turkic</a>.</p>
+</footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside id="panel" aria-hidden="true" aria-labelledby="pname" role="dialog">
+  <div class="ptop">
+    <div class="ref" id="pref"></div>
+    <button class="ib" id="prev" aria-label="Previous branch">‹</button>
+    <button class="ib" id="next" aria-label="Next branch">›</button>
+    <button class="ib" id="close" aria-label="Close">✕</button>
+  </div>
+  <div class="pbody" id="pbody"></div>
+</aside>
+
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+(()=>{
+const D=JSON.parse(document.getElementById('data').textContent);
+const COL={main:'#e8ebf2',olduy:'#c9b48a',oghur:'#c3a6ff',kip:'#56d4dd',kar:'#f5c451',oghuz:'#ff7b72',arghu:'#f19bd2',sib:'#79b8ff',ots:'#7ee787'};
+const ORDER=['main','danube','chuvash','tatar','bashkir','crimean','kazakh','kyrgyz','uzbek','uyghur','yugur','turkmen','azeri','turkish','gagauz','khalaj','khakas','altai','tuvan','sakha','ots'];
+const REL={danube:['main','chuvash'],chuvash:['main'],tatar:['main','crimean','chuvash'],bashkir:['main','crimean'],crimean:['main'],
+  kazakh:['main','crimean'],kyrgyz:['main','crimean'],uzbek:['main','karluk','kazakh'],uyghur:['main','karluk','yugur'],yugur:['main'],
+  turkmen:['main','azeri'],azeri:['main'],turkish:['main','azeri'],gagauz:['main','azeri','turkish'],khalaj:['main'],
+  khakas:['main','altai'],altai:['main'],tuvan:['main','altai'],sakha:['main'],main:[],ots:['kazakh','kyrgyz','uzbek','azeri','turkish']};
+const ALIAS={karluk:'uzbek'};
+const svg=document.getElementById('graph'), panel=document.getElementById('panel'), body=document.getElementById('pbody'), scrim=document.getElementById('scrim');
+const els=[...svg.querySelectorAll('[data-l]')];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let cur=null;
+
+function mark(k,cls){
+  const on=new Set(k==='karluk'?['karluk']:[k]), rel=new Set(REL[k]||[]);
+  if(k==='uzbek'||k==='uyghur') on.add(k);
+  svg.classList.toggle(cls,!!k);
+  els.forEach(e=>{const l=e.dataset.l;e.classList.toggle('on',!!k&&on.has(l));e.classList.toggle('rel',!!k&&!on.has(l)&&rel.has(l));});
+}
+function render(k){
+  const d=D[k], c=COL[d.group];
+  document.getElementById('pref').innerHTML=`$ git checkout <b style="color:${c}">${esc(d.ref)}</b>`;
+  body.innerHTML=`
+    <div class="bar" style="background:${c}"></div>
+    <h2 id="pname">${esc(d.name)}</h2>
+    <p class="endo" style="color:${c}">${esc(d.endonym)}</p>
+    <p class="grpline"><b style="color:${c}">${esc(d.groupName)}</b> · ${esc(d.groupDesc)}</p>
+    <div class="k">${k==='ots'?'Members':k==='main'?'Homeland':k==='danube'?'Where they lived':'Where they live today'}</div>
+    <p class="where">${esc(d.where)}</p>
+    <div class="k">In brief</div>
+    <p class="brief">${esc(d.brief)}</p>
+    <div class="k">git log --oneline</div>
+    <ul class="log">${d.moments.map(([y,t])=>`<li><span style="color:${c}">*</span><span class="y" style="color:${c}">${esc(y)}</span><span>${esc(t)}</span></li>`).join('')}</ul>
+    <div class="k">Images</div>
+    <div class="gal">${d.images.map(im=>`<figure><a class="ph" href="${im.page}" target="_blank" rel="noopener"><img loading="lazy" alt="${esc(im.caption)}" src="${im.src}" onload="this.classList.add('ld')" onerror="this.parentNode.classList.add('err')"></a>
+      <figcaption>${esc(im.caption)}<small>${esc(im.author)} · ${im.licUrl?`<a href="${im.licUrl}" target="_blank" rel="noopener">${esc(im.lic)}</a>`:esc(im.lic)} · <a href="${im.page}" target="_blank" rel="noopener">Wikimedia Commons</a></small></figcaption></figure>`).join('')}</div>
+    <div class="k">Read more</div>
+    <div class="wl">${d.wiki.map(([t,u],i)=>`<a class="wbtn${i?'':' primary'}" href="${u}" target="_blank" rel="noopener">${esc(t)} <span>Wikipedia ↗</span></a>`).join('')}</div>`;
+  body.scrollTop=0;
+}
+function open(k,push=true){
+  k=ALIAS[k]||k; if(!D[k]) return;
+  cur=k; render(k); mark(k,'focus');
+  document.body.classList.add('po');panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); scrim.classList.add('open');
+  document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-current',b.dataset.k===k));
+  document.querySelectorAll('#graph .row').forEach(r=>r.classList.toggle('on',r.dataset.l===k));
+  if(push) history.replaceState(null,'','#'+k);
+  document.getElementById('close').focus({preventScroll:true});
+}
+function close(){
+  cur=null; mark(null,'focus'); document.body.classList.remove('po');panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); scrim.classList.remove('open');
+  document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-current',false));
+  document.querySelectorAll('#graph .row').forEach(r=>r.classList.remove('on'));
+  history.replaceState(null,'',location.pathname+location.search);
+}
+function step(n){const i=ORDER.indexOf(cur);open(ORDER[(i+n+ORDER.length)%ORDER.length]);}
+
+svg.addEventListener('click',e=>{const t=e.target.closest('[data-l]');if(t)open(t.dataset.l);});
+svg.addEventListener('keydown',e=>{const t=e.target.closest('.row');if(t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open(t.dataset.l);}});
+svg.addEventListener('mouseover',e=>{if(cur)return;const t=e.target.closest('[data-l]');mark(t?(ALIAS[t.dataset.l]||t.dataset.l):null,'hov');});
+svg.addEventListener('mouseleave',()=>{if(!cur)mark(null,'hov');});
+scrim.addEventListener('click',close);
+document.getElementById('close').addEventListener('click',close);
+document.getElementById('prev').addEventListener('click',()=>step(-1));
+document.getElementById('next').addEventListener('click',()=>step(1));
+document.addEventListener('keydown',e=>{if(!cur)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
+
+const chips=document.getElementById('chips');
+const groups=[['main',['main']],['oghur',['danube','chuvash']],['kip',['tatar','bashkir','crimean','kazakh','kyrgyz']],['kar',['uzbek','uyghur']],
+  ['olduy',['yugur']],['oghuz',['turkmen','azeri','turkish','gagauz']],['arghu',['khalaj']],['sib',['khakas','altai','tuvan','sakha']],['ots',['ots']]];
+chips.innerHTML='<div class="lbl">ALL BRANCHES</div>'+groups.map(([g,ks])=>ks.map(k=>`<button class="chip" data-k="${k}"><i style="background:${COL[g]}"></i>${esc(D[k].name)}</button>`).join('')).join('');
+chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)open(b.dataset.k);});
+
+const h=location.hash.slice(1); if(D[h]) open(h,false);
+window.addEventListener('hashchange',()=>{const k=location.hash.slice(1);if(D[k])open(k,false);});
+})();
+</script>
+</body>
+</html>
