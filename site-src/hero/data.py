@@ -122,7 +122,7 @@ legend=''.join([
  leg(2,f'<circle cx="8" cy="0" r="5.4" fill="{BG}" stroke="{D}" stroke-width="2.4"/>','merge: two lines join'),
  leg(3,f'<path d="M-2,0 H18" stroke="{D}" stroke-width="2" stroke-dasharray="5 4"/>','contact or debated link'),
  leg(4,f'<path d="M3,-5 l10,10 m0,-10 l-10,10" stroke="{D}" stroke-width="2.4" stroke-linecap="round"/>','archived branch'),
- leg(5,f'<path d="M8,-8 V8" stroke="{T}" stroke-width="2.6"/><circle cx="8" cy="0" r="4.4" fill="{BG}" stroke="{T}" stroke-width="2.2"/>','octopus merge (see below)'),
+ leg(5,f'<path d="M8,-8 V8" stroke="{T}" stroke-width="2.6"/><circle cx="8" cy="0" r="4.4" fill="{BG}" stroke="{T}" stroke-width="2.2"/>','octopus merge: Turkic States'),
 ])
 add(legend)
 fy=YB+60
