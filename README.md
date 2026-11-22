@@ -1,26 +1,35 @@
-# turkic-git
+# Siberian branch
 
-The history of the Turkic peoples, told as a git repository.
+`siberian/trunk`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Where it is spoken** | The Altai, the Sayan mountains, the upper Yenisei and the Lena basin, Russia |
+| **Branch** | Siberian: Northeastern Turkic. A regional grouping: Sakha split off early, and only South Siberian forms a clear unit. |
 
-## Reading the dates
+Northeastern Turkic. This is a regional grouping more than a proven single branch: the Sakha (Yakut) line probably separated early from the rest of Common Turkic, while Tuvan, Khakas and the Altai varieties form a clearer South Siberian unit. These languages stayed closest to the old Turkic homeland and kept many archaic features.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **c. 600 CE**: Northeastern (Siberian) Turkic groups in the Altai-Sayan-Yenisei region
 
-## Caveats
+Run `git log --oneline siberian/trunk` to see them together with the history they build on. The same list is in [`lineages/siberian--trunk.md`](lineages/siberian--trunk.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Branches that continue from here
+
+- [`siberian/yenisei-kyrgyz`](https://github.com/berkayozdemr/turkic/tree/siberian/yenisei-kyrgyz)
+- [`siberian/khakas`](https://github.com/berkayozdemr/turkic/tree/siberian/khakas)
+- [`siberian/altai`](https://github.com/berkayozdemr/turkic/tree/siberian/altai)
+- [`siberian/tuvan`](https://github.com/berkayozdemr/turkic/tree/siberian/tuvan)
+- [`siberian/sakha`](https://github.com/berkayozdemr/turkic/tree/siberian/sakha)
+
+## Read more
+
+- [Siberian Turkic languages](https://en.wikipedia.org/wiki/Siberian_Turkic_languages) on Wikipedia
+- [Interactive graph](https://berkayozdemr.github.io/turkic/)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
