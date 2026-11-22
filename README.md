@@ -21,18 +21,11 @@ Each commit is one historical event.
 
 Run `git log --oneline karluk/uyghur` to see them together with the history they build on. The same list is in [`lineages/karluk--uyghur.md`](lineages/karluk--uyghur.md).
 
-## Images
-
-<a href="https://commons.wikimedia.org/wiki/File:Uyghur_Meshrep.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Uyghur_Meshrep.jpg/960px-Uyghur_Meshrep.jpg" alt="Musicians at a meshrep gathering, Yarkand" height="230"></a> <a href="https://commons.wikimedia.org/wiki/File:KashgarNaan.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/KashgarNaan.jpg/960px-KashgarNaan.jpg" alt="Baking naan in Kashgar" height="230"></a>
-
-1. Musicians at a meshrep gathering, Yarkand. travelingmipo (Flickr), [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Uyghur_Meshrep.jpg).
-2. Baking naan in Kashgar. Doron, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:KashgarNaan.jpg).
-
 ## Read more
 
 - [Uyghurs](https://en.wikipedia.org/wiki/Uyghurs) on Wikipedia
 - [Uyghur language](https://en.wikipedia.org/wiki/Uyghur_language) on Wikipedia
-- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#uyghur)
+- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#uyghur) for photos
 
 ---
 
