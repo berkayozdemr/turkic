@@ -2,7 +2,7 @@
 import json, hashlib, subprocess, os, sys, urllib.parse
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from content import P, GROUP_INFO
+from content import P, GROUP_INFO, FLAGS, flag_urls
 
 svg_path = os.path.join(HERE, 'graph.svg')
 subprocess.run([sys.executable, os.path.join(HERE, 'graph_gen.py'), os.path.join(HERE, 'hero'), svg_path], check=True)
@@ -33,6 +33,9 @@ for k, v in P.items():
     for im in v['images']:
         src, page = urls(im['file'])
         d['images'].append(dict(src=src, page=page, lic=im['lic'], licUrl=LIC[im['lic']], author=im['author'], caption=im['caption']))
+    if k in FLAGS:
+        fs, fp = flag_urls(FLAGS[k][0])
+        d['flag'] = dict(src=fs, page=fp, label=FLAGS[k][1])
     data[k] = d
 
 tpl = open(os.path.join(HERE, 'template.html')).read()

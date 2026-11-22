@@ -253,3 +253,31 @@ P['ots'] = dict(
     images=[I('Headquarter of The Organization of Turkic States in 2022 (1).jpg', 'CC BY-SA 4.0', 'Mehman Ibragimov', 'Secretariat of the Organization of Turkic States, Istanbul')],
 )
 P['karluk'] = None  # shared Karluk trunk: handled in the page (opens Uzbek)
+
+# Flags shown next to the names. Only official flags of a state, republic or autonomous region,
+# plus the Crimean Tatar national flag. Peoples without an official flag of their own
+# (Danube Bulgars, Uyghurs, Western Yugurs, Khalaj) get none. key -> (Commons file, label)
+FLAGS = {
+    'chuvash': ('Flag of Chuvashia.svg', 'Flag of Chuvashia'),
+    'tatar': ('Flag of Tatarstan.svg', 'Flag of Tatarstan'),
+    'bashkir': ('Flag of Bashkortostan.svg', 'Flag of Bashkortostan'),
+    'crimean': ('Flag of the Crimean Tatar people.svg', 'Crimean Tatar national flag'),
+    'kazakh': ('Flag of Kazakhstan.svg', 'Flag of Kazakhstan'),
+    'kyrgyz': ('Flag of Kyrgyzstan.svg', 'Flag of Kyrgyzstan'),
+    'uzbek': ('Flag of Uzbekistan.svg', 'Flag of Uzbekistan'),
+    'turkmen': ('Flag of Turkmenistan.svg', 'Flag of Turkmenistan'),
+    'azeri': ('Flag of Azerbaijan.svg', 'Flag of Azerbaijan'),
+    'turkish': ('Flag of Turkey.svg', 'Flag of Türkiye'),
+    'gagauz': ('Flag of Gagauzia.svg', 'Flag of Gagauzia'),
+    'khakas': ('Flag of Khakassia.svg', 'Flag of Khakassia'),
+    'altai': ('Flag of Altai Republic.svg', 'Flag of the Altai Republic'),
+    'tuvan': ('Flag of Tuva.svg', 'Flag of Tuva'),
+    'sakha': ('Flag of Sakha.svg', 'Flag of the Sakha Republic'),
+    'ots': ('Flag of the Organization of Turkic States.svg', 'Flag of the Organization of Turkic States'),
+}
+
+def flag_urls(file, px=120):
+    import hashlib, urllib.parse
+    n = file.replace(' ', '_'); h = hashlib.md5(n.encode()).hexdigest(); q = urllib.parse.quote(n)
+    return (f'https://upload.wikimedia.org/wikipedia/commons/thumb/{h[0]}/{h[:2]}/{q}/{px}px-{q}.png',
+            f'https://commons.wikimedia.org/wiki/File:{q}')

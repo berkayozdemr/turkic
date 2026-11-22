@@ -5,6 +5,8 @@ unchanged, and tags every drawn element with data-l="<lane>" so the page can hig
 Usage: python3 graph_gen.py ../hero-image-src out.svg
 """
 import sys, os, re, html
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from content import FLAGS, flag_urls
 
 SRC = sys.argv[1]
 gen = open(os.path.join(SRC, 'gen.py')).read()
@@ -78,13 +80,19 @@ for k, n, r, g in ROWS:
     hits.append(f'<rect class="hit" data-l="{k}" x="{x0:.1f}" y="{yy-17}" width="{W-40-x0:.1f}" height="34"/>')
 hits.append(f'<rect class="hit" data-l="main" x="{X(-300)-14:.1f}" y="{RY["yugur"]-17}" width="{X(840)-X(-300)+20:.1f}" height="34"/>')
 
+FW = 44  # room for the flag icon left of each name
+W += FW
 lab = []
 for k, n, r, g in ROWS:
     yy = RY[k]; col = C[g]
+    flag = ''
+    if k in FLAGS:
+        flag = (f'<image class="flag" href="{flag_urls(FLAGS[k][0])[0]}" x="{XL}" y="{yy-11}" width="34" height="23" '
+                f'preserveAspectRatio="xMinYMid meet"><title>{esc(FLAGS[k][1])}</title></image>')
     lab.append(f'<g class="row" data-l="{k}" tabindex="0" role="button" aria-label="{esc(n)}: show details">'
                f'<rect class="rowbg" x="{XL-12}" y="{yy-24}" width="{W-40-XL+6}" height="46" rx="8"/>'
                f'<path d="M{XE+4},{yy} H{XL-8}" stroke="{col}" stroke-width="1.2" stroke-dasharray="1.5 3.5" opacity=".7"/>'
-               f'<text x="{XL}" y="{yy-1.5}" class="nm">{esc(n)}</text><text x="{XL}" y="{yy+14.5}" class="ref" fill="{col}">{esc(r)}</text></g>')
+               f'{flag}<text x="{XL+FW}" y="{yy-1.5}" class="nm">{esc(n)}</text><text x="{XL+FW}" y="{yy+14.5}" class="ref" fill="{col}">{esc(r)}</text></g>')
 for g, ys in GY.items():
     col = C[g]; a, b = min(ys) - 15, max(ys) + 18
     lab.append(f'<rect x="{W-33}" y="{a}" width="3" height="{b-a}" rx="1.5" fill="{col}"/>')
