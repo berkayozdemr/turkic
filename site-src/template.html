@@ -49,11 +49,13 @@ header h1 em{font-style:normal;color:var(--accent)}
 #graph .row .rowbg{fill:transparent;transition:fill .2s}
 #graph .row:hover .rowbg,#graph .row:focus-visible .rowbg,#graph .row.on .rowbg{fill:#ffffff0d}
 #graph .row:focus{outline:none}#graph .row:focus-visible .rowbg{stroke:var(--accent);stroke-width:1.5}
-#graph .legend{transition:opacity .25s}
 #graph.focus [data-l]:not(.on):not(.rel){opacity:.12}
 #graph.focus [data-l].rel{opacity:.5}
-#graph.focus .legend{opacity:.25}
 #graph.hov:not(.focus) [data-l]:not(.on):not(.rel){opacity:.3}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:16px;padding:0 4px;font-size:13px;color:#aab2c2}
+.legend .lt{font:700 10.5px var(--mono);letter-spacing:2px;color:#6f7a8f}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend svg{width:18px;height:18px;flex:none}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .chip{font:500 13px var(--sans);color:var(--text2);background:var(--card);border:1px solid var(--line);border-radius:999px;
   padding:7px 12px 7px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
@@ -117,6 +119,15 @@ figcaption small a{color:var(--muted)}
 <body>
 <div class="wrap">
 <div class="graphcard"><div class="scroller"><!--GRAPH--></div></div>
+<div class="legend" aria-label="How to read the graph">
+  <span class="lt">HOW TO READ</span>
+  <span><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="4.2" fill="#aab2c2"/></svg>commit: an event</span>
+  <span><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5" fill="none" stroke="#aab2c2" stroke-width="1.2" opacity=".6"/><circle cx="10" cy="10" r="4" fill="#aab2c2"/></svg>tag: a milestone</span>
+  <span><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="5.4" fill="none" stroke="#aab2c2" stroke-width="2.4"/></svg>merge: two lines join</span>
+  <span><svg viewBox="0 0 20 20"><path d="M0,10 H20" stroke="#aab2c2" stroke-width="2" stroke-dasharray="5 4"/></svg>contact or debated link</span>
+  <span><svg viewBox="0 0 20 20"><path d="M5,5 l10,10 m0,-10 l-10,10" stroke="#aab2c2" stroke-width="2.4" stroke-linecap="round"/></svg>archived branch</span>
+  <span><svg viewBox="0 0 20 20"><path d="M10,2 V18" stroke="#7ee787" stroke-width="2.6"/><circle cx="10" cy="10" r="4.4" fill="#0a0e16" stroke="#7ee787" stroke-width="2.2"/></svg>octopus merge: Turkic States</span>
+</div>
 
 </div>
 

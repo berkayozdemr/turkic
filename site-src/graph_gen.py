@@ -63,7 +63,7 @@ for i, s in enumerate(o):
     elif (f'stroke="{T}"' in s or f'fill:{T}' in s) and 'translate' not in s:
         o[i] = re.sub(r'^<(\w+)', r'<\1 data-l="ots"', s, count=1)
     elif 'HOW TO READ' in s or 'translate(' in s:
-        o[i] = f'<g class="legend">{s}</g>'
+        o[i] = ''  # legend is drawn as HTML below the graph
 
 RY, X, ROWS, W, XE, XL = ns['RY'], ns['X'], ns['ROWS'], ns['W'], ns['XE'], ns['XL']
 Y0, YB, GY, GROUPS, esc = ns['Y0'], ns['YB'], ns['GY'], ns['GROUPS'], ns['esc']
