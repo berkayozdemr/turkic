@@ -5,7 +5,7 @@ The history of the Turkic peoples, told as a git repository.
 ## Explore
 
 - **[Interactive graph](https://berkayozdemr.github.io/turkic/)**: the whole family on one screen. Click a branch to read about that people.
-- **Every branch has its own README** with a short summary of that people: their own name, where they live today, the events on the branch, images and links to Wikipedia. Switch branch on GitHub, or follow a link:
+- **Every branch has its own README** with a short summary of that people: their own name, where they live today, the events on the branch and links to Wikipedia. Switch branch on GitHub, or follow a link:
 
 | Group | Branches |
 |---|---|
