@@ -7,8 +7,7 @@ on top of its own branch (see the README in this folder). REMOTE defaults to "or
 import os, subprocess, sys, urllib.parse
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from content import P, GROUP_INFO, FLAGS, flag_urls
-from build_urls import image_urls, LIC
+from content import P, GROUP_INFO, FLAGS
 
 OUT = sys.argv[1]
 REMOTE = sys.argv[2] if len(sys.argv) > 2 else 'origin'
@@ -126,14 +125,9 @@ def footer(extra=''):
 def people_readme(branch, key):
     d = P[key]; g, gdesc = GROUP_INFO[d['group']]
     title = TITLE.get(branch, d['name'])
-    flag = ''
-    credit = ''
-    if key in FLAGS:
-        src, page = flag_urls(FLAGS[key][0])
-        flag = f'<a href="{page}"><img src="{src}" alt="{FLAGS[key][1]}" height="26"></a> '
-        credit = f'Flag: [{FLAGS[key][1]}]({page}), via Wikimedia Commons. '
+    # No hotlinked images here: Wikimedia answers GitHub's image proxy with HTTP 429, so they would show as broken.
     brief = d['brief'].replace(' In the graph this row also carries the shared Oghuz trunk.', '')
-    o = [f'# {flag}{title}', '', f'`{branch}`', '',
+    o = [f'# {title}', '', f'`{branch}`', '',
          '| | |', '|---|---|',
          f"| **{'Name' if key == 'ots' else 'Self-name'}** | {d['endonym']} |",
          f"| **{WHERE_LABEL.get(key, 'Where they live today')}** | {d['where']} |"]
@@ -141,18 +135,10 @@ def people_readme(branch, key):
         o.append(f'| **Branch** | {g}: {gdesc} |')
     o += ['', brief, '']
     o += common_tail(branch, key)
-    o += ['## Images', '']
-    cells, creds = [], []
-    for i, im in enumerate(d['images'], 1):
-        src, page = image_urls(im['file'])
-        cells.append(f'<a href="{page}"><img src="{src}" alt="{im["caption"]}" height="230"></a>')
-        lic = im['lic'] if not LIC[im['lic']] else f"[{im['lic']}]({LIC[im['lic']]})"
-        creds.append(f"{i}. {im['caption']}. {im['author']}, {lic}, via [Wikimedia Commons]({page}).")
-    o += [' '.join(cells), ''] + creds + ['']
     o += ['## Read more', '']
     o += [f'- [{t}]({WIKI}{urllib.parse.quote(s)}) on Wikipedia' for t, s in d['wiki']]
-    o += [f'- [Open this branch in the interactive graph]({SITE}#{key})', '']
-    o += footer(credit)
+    o += [f'- [Open this branch in the interactive graph]({SITE}#{key}) for photos' + (' and the flag' if key in FLAGS else ''), '']
+    o += footer()
     return '\n'.join(o)
 
 def extra_readme(branch):
