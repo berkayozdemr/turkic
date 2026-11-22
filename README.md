@@ -1,26 +1,35 @@
-# turkic-git
+# Volga Bulgars
 
-The history of the Turkic peoples, told as a git repository.
+`oghur/volga-bulgar`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Where they lived** | The middle Volga and Kama rivers, in today's Tatarstan and Chuvashia, Russia |
+| **Branch** | Oghur: Bulgharic or "r-Turkic". The first branch to split off, around the 1st century BCE. |
 
-## Reading the dates
+Bulgar groups who moved north to the middle Volga after Old Great Bulgaria broke up in the 7th century. Their state, Volga Bulgaria, adopted Islam in 922, the year of Ibn Fadlan's embassy, and was a trading power between the forest zone and the steppe until the Mongol conquest of 1236. Volga Bulgar was an Oghur language; Chuvash is its closest living relative, and Volga Bulgar heritage is also part of the history of the Kazan Tatars.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **c. 700 CE**: Bulgar groups move north to the Middle Volga
+- **922 CE**: Volga Bulgaria adopts Islam (embassy of Ibn Fadlan)
+- **1236**: Mongol conquest of Volga Bulgaria
 
-## Caveats
+Run `git log --oneline oghur/volga-bulgar` to see them together with the history they build on. The same list is in [`lineages/oghur--volga-bulgar.md`](lineages/oghur--volga-bulgar.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Branches that continue from here
+
+- [`oghur/chuvash`](https://github.com/berkayozdemr/turkic/tree/oghur/chuvash)
+- [`kipchak/tatar`](https://github.com/berkayozdemr/turkic/tree/kipchak/tatar)
+
+## Read more
+
+- [Volga Bulgaria](https://en.wikipedia.org/wiki/Volga_Bulgaria) on Wikipedia
+- [Bulgar language](https://en.wikipedia.org/wiki/Bulgar_language) on Wikipedia
+- [Interactive graph](https://berkayozdemr.github.io/turkic/)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
