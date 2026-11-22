@@ -1,26 +1,40 @@
-# turkic-git
+# Karluk branch
 
-The history of the Turkic peoples, told as a git repository.
+`karluk/trunk`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Where it is spoken** | Uzbekistan and its neighbours, and the Tarim Basin in Xinjiang, China |
+| **Branch** | Karluk: Southeastern Turkic, heir to the Karakhanid and Chagatai literary tradition. |
 
-## Reading the dates
+Southeastern Turkic. The Karluk tribes are first mentioned in the 7th century between the Altai and the Tian Shan. The Kara-Khanid Khanate, which grew out of the Karluk confederation, was the first Turkic dynasty to adopt Islam, around 960, and Mahmud al-Kashgari wrote his dictionary of the Turkic languages in that world in 1072-74. Under the Timurids, Chagatai became the literary language of Central Asia. Uzbek and Uyghur both continue it.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **c. 650 CE**: Karluk tribes appear between the Altai and the Tian Shan
+- **766 CE**: Karluks take Suyab and the Chu valley
+- **c. 960 CE**: Kara-Khanid Khanate converts to Islam
+- **1072**: Mahmud al-Kashgari writes the Dīwān Lughāt al-Turk; Yusuf Balasaguni's Kutadgu Bilig (1069)
+- **1370**: Timurid era: Chagatai becomes the literary language of Central Asia
+- **c. 1480**: Alisher Navoi's works define classical Chagatai literature
 
-## Caveats
+Run `git log --oneline karluk/trunk` to see them together with the history they build on. The same list is in [`lineages/karluk--trunk.md`](lineages/karluk--trunk.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Branches that continue from here
+
+- [`karluk/uzbek`](https://github.com/berkayozdemr/turkic/tree/karluk/uzbek)
+- [`karluk/uyghur`](https://github.com/berkayozdemr/turkic/tree/karluk/uyghur)
+
+## Read more
+
+- [Karluks](https://en.wikipedia.org/wiki/Karluks) on Wikipedia
+- [Karluk languages](https://en.wikipedia.org/wiki/Karluk_languages) on Wikipedia
+- [Kara-Khanid Khanate](https://en.wikipedia.org/wiki/Kara-Khanid_Khanate) on Wikipedia
+- [Chagatai language](https://en.wikipedia.org/wiki/Chagatai_language) on Wikipedia
+- [Interactive graph](https://berkayozdemr.github.io/turkic/)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
