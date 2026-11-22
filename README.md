@@ -1,26 +1,40 @@
-# turkic-git
+# <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Tatarstan.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_Tatarstan.svg/120px-Flag_of_Tatarstan.svg.png" alt="Flag of Tatarstan" height="26"></a> Tatars (Volga Tatars)
 
-The history of the Turkic peoples, told as a git repository.
+`kipchak/tatar`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Self-name** | Tatar · Татар |
+| **Where they live today** | Tatarstan (Kazan), the Volga-Ural region and Siberia, Russia |
+| **Branch** | Kipchak: Northwestern Turkic, from the Black Sea steppe to the Altai. |
 
-## Reading the dates
+The largest Turkic people of Russia and its second-largest ethnic group, with Kazan as the cultural centre. Their language is Kipchak; their heritage also draws on Volga Bulgaria, and how much weight each side carries is still debated. The Khanate of Kazan (1438) was conquered by Muscovy in 1552.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **c. 1400**: Kipchak-speaking population settles the Middle Volga
+- **c. 1420**: Merge Volga Bulgar heritage into the Kipchak-speaking Volga population (the ancestors of the Kazan Tatars; the weight of each side is debated)
+- **1438**: Khanate of Kazan
+- **1552**: Kazan conquered by Muscovy
+- **1920**: Tatar ASSR
 
-## Caveats
+Run `git log --oneline kipchak/tatar` to see them together with the history they build on. The same list is in [`lineages/kipchak--tatar.md`](lineages/kipchak--tatar.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Images
+
+<a href="https://commons.wikimedia.org/wiki/File:Mosque_%22Kul_Sharif%22.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Mosque_%22Kul_Sharif%22.jpg" alt="Kul Sharif mosque in the Kazan Kremlin" height="230"></a> <a href="https://commons.wikimedia.org/wiki/File:Bolgar._White_Mosque_P6270610_2575.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bolgar._White_Mosque_P6270610_2575.jpg/960px-Bolgar._White_Mosque_P6270610_2575.jpg" alt="The White Mosque at Bolgar, the old Volga Bulgar capital" height="230"></a>
+
+1. Kul Sharif mosque in the Kazan Kremlin. Ilya Tsvetkov, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mosque_%22Kul_Sharif%22.jpg).
+2. The White Mosque at Bolgar, the old Volga Bulgar capital. Alexxx1979, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bolgar._White_Mosque_P6270610_2575.jpg).
+
+## Read more
+
+- [Volga Tatars](https://en.wikipedia.org/wiki/Volga_Tatars) on Wikipedia
+- [Tatar language](https://en.wikipedia.org/wiki/Tatar_language) on Wikipedia
+- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#tatar)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). Flag: [Flag of Tatarstan](https://commons.wikimedia.org/wiki/File:Flag_of_Tatarstan.svg), via Wikimedia Commons. This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
