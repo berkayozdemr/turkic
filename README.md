@@ -19,18 +19,11 @@ Each commit is one historical event.
 
 Run `git log --oneline oghur/danube-bulgar` to see them together with the history they build on. The same list is in [`lineages/oghur--danube-bulgar.md`](lineages/oghur--danube-bulgar.md).
 
-## Images
-
-<a href="https://commons.wikimedia.org/wiki/File:JE%C5%B9DZIEC_Z_MADARY.JPG"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/JE%C5%B9DZIEC_Z_MADARY.JPG/960px-JE%C5%B9DZIEC_Z_MADARY.JPG" alt="The Madara Rider, an early medieval rock relief in north-east Bulgaria" height="230"></a> <a href="https://commons.wikimedia.org/wiki/File:Pliska-svik.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Pliska-svik.jpg/960px-Pliska-svik.jpg" alt="Pliska, the first capital of the Danube Bulgar state" height="230"></a>
-
-1. The Madara Rider, an early medieval rock relief in north-east Bulgaria. Dom2002, Public domain, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:JE%C5%B9DZIEC_Z_MADARY.JPG).
-2. Pliska, the first capital of the Danube Bulgar state. Wikimedia Commons contributor, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pliska-svik.jpg).
-
 ## Read more
 
 - [Bulgars](https://en.wikipedia.org/wiki/Bulgars) on Wikipedia
 - [First Bulgarian Empire](https://en.wikipedia.org/wiki/First_Bulgarian_Empire) on Wikipedia
-- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#danube)
+- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#danube) for photos
 
 ---
 
