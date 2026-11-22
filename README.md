@@ -1,26 +1,39 @@
-# turkic-git
+# <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Azerbaijan.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Flag_of_Azerbaijan.svg/120px-Flag_of_Azerbaijan.svg.png" alt="Flag of Azerbaijan" height="26"></a> Azerbaijanis
 
-The history of the Turkic peoples, told as a git repository.
+`oghuz/azerbaijani`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Self-name** | Azərbaycanlı |
+| **Where they live today** | Azerbaijan and north-western Iran; also Georgia, Russia and Türkiye |
+| **Branch** | Oghuz: Southwestern Turkic, carried west by the Seljuks from the 11th century. |
 
-## Reading the dates
+An Oghuz people of the South Caucasus and north-western Iran, whose Turkification ran from the Seljuk 11th century to the Safavid 16th. Divided between two states since the 19th century, more Azerbaijanis live in Iran than in Azerbaijan.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **c. 1100**: Oghuz settle in Azerbaijan and north-western Iran
+- **1501**: Safavid dynasty; Shah Ismail I writes Turkic poetry under the name Khatai
+- **1918**: Azerbaijan Democratic Republic, the first parliamentary republic in the Muslim world
+- **1991**: Independence of Azerbaijan (Constitutional Act, 18 October)
 
-## Caveats
+Run `git log --oneline oghuz/azerbaijani` to see them together with the history they build on. The same list is in [`lineages/oghuz--azerbaijani.md`](lineages/oghuz--azerbaijani.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Images
+
+<a href="https://commons.wikimedia.org/wiki/File:Ashiqs_in_Tabriz.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Ashiqs_in_Tabriz.jpg" alt="Ashiqs, travelling bards, in Tabriz" height="230"></a> <a href="https://commons.wikimedia.org/wiki/File:Azerigirls.JPG"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Azerigirls.JPG" alt="Azerbaijani folk dancers" height="230"></a>
+
+1. Ashiqs, travelling bards, in Tabriz. Vivas, [GFDL](https://www.gnu.org/licenses/fdl-1.3.html), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ashiqs_in_Tabriz.jpg).
+2. Azerbaijani folk dancers. Oleg Litvin, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Azerigirls.JPG).
+
+## Read more
+
+- [Azerbaijanis](https://en.wikipedia.org/wiki/Azerbaijanis) on Wikipedia
+- [Azerbaijani language](https://en.wikipedia.org/wiki/Azerbaijani_language) on Wikipedia
+- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#azeri)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). Flag: [Flag of Azerbaijan](https://commons.wikimedia.org/wiki/File:Flag_of_Azerbaijan.svg), via Wikimedia Commons. This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
