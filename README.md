@@ -1,26 +1,37 @@
-# turkic-git
+# <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Tuva.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Tuva.svg/120px-Flag_of_Tuva.svg.png" alt="Flag of Tuva" height="26"></a> Tuvans
 
-The history of the Turkic peoples, told as a git repository.
+`siberian/tuvan`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Self-name** | Tyva · Тыва |
+| **Where they live today** | Tuva, Russia; also western Mongolia and Xinjiang |
+| **Branch** | Siberian: Northeastern Turkic. A regional grouping: Sakha split off early, and only South Siberian forms a clear unit. |
 
-## Reading the dates
+Mostly Buddhist herders at the headwaters of the Yenisei, famous for throat singing (khöömei). Tuvan belongs to the Sayan group of South Siberian Turkic. Tuva was nominally independent as the Tuvan People's Republic from 1921 and joined the Soviet Union in 1944.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **1921**: Tuvan People's Republic
+- **1944**: Tuva joins the USSR
 
-## Caveats
+Run `git log --oneline siberian/tuvan` to see them together with the history they build on. The same list is in [`lineages/siberian--tuvan.md`](lineages/siberian--tuvan.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Images
+
+<a href="https://commons.wikimedia.org/wiki/File:%D0%A2%D1%83%D0%B2%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B5_%D0%BC%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0_%D1%85%D0%BE%D0%BE%D0%BC%D0%B5%D1%8F.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/%D0%A2%D1%83%D0%B2%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B5_%D0%BC%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0_%D1%85%D0%BE%D0%BE%D0%BC%D0%B5%D1%8F.jpg/960px-%D0%A2%D1%83%D0%B2%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B5_%D0%BC%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0_%D1%85%D0%BE%D0%BE%D0%BC%D0%B5%D1%8F.jpg" alt="Masters of khöömei (throat singing), Kyzyl" height="230"></a> <a href="https://commons.wikimedia.org/wiki/File:Tuvan_wrestlers_2.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Tuvan_wrestlers_2.jpg/960px-Tuvan_wrestlers_2.jpg" alt="Tuvan khuresh wrestlers" height="230"></a>
+
+1. Masters of khöömei (throat singing), Kyzyl. Agilight, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:%D0%A2%D1%83%D0%B2%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B5_%D0%BC%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0_%D1%85%D0%BE%D0%BE%D0%BC%D0%B5%D1%8F.jpg).
+2. Tuvan khuresh wrestlers. Dmitriy Stepanov, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tuvan_wrestlers_2.jpg).
+
+## Read more
+
+- [Tuvans](https://en.wikipedia.org/wiki/Tuvans) on Wikipedia
+- [Tuvan language](https://en.wikipedia.org/wiki/Tuvan_language) on Wikipedia
+- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#tuvan)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). Flag: [Flag of Tuva](https://commons.wikimedia.org/wiki/File:Flag_of_Tuva.svg), via Wikimedia Commons. This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
