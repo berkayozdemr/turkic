@@ -1,26 +1,35 @@
-# turkic-git
+# Seljuks
 
-The history of the Turkic peoples, told as a git repository.
+`oghuz/seljuk`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Where they ruled** | From Central Asia across Iran and Iraq to Anatolia |
+| **Branch** | Oghuz: Southwestern Turkic, carried west by the Seljuks from the 11th century. |
 
-## Reading the dates
+A dynasty from the Qiniq tribe of the Oghuz. Tughril and Chaghri Beg founded the Great Seljuk state in 1037 and defeated the Ghaznavids at Dandanaqan in 1040. The victory at Manzikert in 1071 opened Anatolia to Turkic settlement, and the Sultanate of Rum ruled there from 1077 to the early 14th century. The Oghuz who came west with the Seljuks are the linguistic ancestors of today's Turks and Azerbaijanis.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **1037**: Tughril and Chaghri Beg found the Great Seljuk state
+- **1071**: Battle of Manzikert opens Anatolia to Turkic settlement
 
-## Caveats
+Run `git log --oneline oghuz/seljuk` to see them together with the history they build on. The same list is in [`lineages/oghuz--seljuk.md`](lineages/oghuz--seljuk.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Branches that continue from here
+
+- [`oghuz/azerbaijani`](https://github.com/berkayozdemr/turkic/tree/oghuz/azerbaijani)
+- [`oghuz/turkish`](https://github.com/berkayozdemr/turkic/tree/oghuz/turkish)
+
+## Read more
+
+- [Seljuk dynasty](https://en.wikipedia.org/wiki/Seljuk_dynasty) on Wikipedia
+- [Seljuk Empire](https://en.wikipedia.org/wiki/Seljuk_Empire) on Wikipedia
+- [Sultanate of Rum](https://en.wikipedia.org/wiki/Sultanate_of_Rum) on Wikipedia
+- [Interactive graph](https://berkayozdemr.github.io/turkic/)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
