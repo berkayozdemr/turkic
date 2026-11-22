@@ -1,4 +1,4 @@
-# <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Tatarstan.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_Tatarstan.svg/120px-Flag_of_Tatarstan.svg.png" alt="Flag of Tatarstan" height="26"></a> Tatars (Volga Tatars)
+# Tatars (Volga Tatars)
 
 `kipchak/tatar`
 
@@ -22,19 +22,12 @@ Each commit is one historical event.
 
 Run `git log --oneline kipchak/tatar` to see them together with the history they build on. The same list is in [`lineages/kipchak--tatar.md`](lineages/kipchak--tatar.md).
 
-## Images
-
-<a href="https://commons.wikimedia.org/wiki/File:Mosque_%22Kul_Sharif%22.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Mosque_%22Kul_Sharif%22.jpg" alt="Kul Sharif mosque in the Kazan Kremlin" height="230"></a> <a href="https://commons.wikimedia.org/wiki/File:Bolgar._White_Mosque_P6270610_2575.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bolgar._White_Mosque_P6270610_2575.jpg/960px-Bolgar._White_Mosque_P6270610_2575.jpg" alt="The White Mosque at Bolgar, the old Volga Bulgar capital" height="230"></a>
-
-1. Kul Sharif mosque in the Kazan Kremlin. Ilya Tsvetkov, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mosque_%22Kul_Sharif%22.jpg).
-2. The White Mosque at Bolgar, the old Volga Bulgar capital. Alexxx1979, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bolgar._White_Mosque_P6270610_2575.jpg).
-
 ## Read more
 
 - [Volga Tatars](https://en.wikipedia.org/wiki/Volga_Tatars) on Wikipedia
 - [Tatar language](https://en.wikipedia.org/wiki/Tatar_language) on Wikipedia
-- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#tatar)
+- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#tatar) for photos and the flag
 
 ---
 
-Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). Flag: [Flag of Tatarstan](https://commons.wikimedia.org/wiki/File:Flag_of_Tatarstan.svg), via Wikimedia Commons. This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
