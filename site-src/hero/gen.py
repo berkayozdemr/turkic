@@ -25,7 +25,7 @@ ROWS=[ # key, name, ref, group
 ("sakha","Sakha (Yakut)","siberian/sakha","sib"),
 ]
 GROUPS=dict(oghur=("OGHUR","Bulgharic · r-Turkic"),kip=("KIPCHAK","Northwestern"),kar=("KARLUK","Southeastern"),olduy=("OLD UYGHUR","Old Turkic line"),oghuz=("OGHUZ","Southwestern"),arghu=("ARGHU","Khalaj"),sib=("SIBERIAN","Northeastern"))
-Y0=254; PITCH=46.5; GAP=17
+Y0=254; PITCH=60; GAP=28
 RY={}; y=Y0; prev=None; GY={}
 for k,n,r,g in ROWS:
     if prev and g!=prev: y+=GAP
@@ -36,12 +36,13 @@ def ry(v):
     if '+' in v:
         a,b=v.split('+'); return (RY[a]+RY[b])/2
     return RY[v]
-BP=[(-300,46),(500,170),(1000,410),(1500,625),(1900,750),(2026,835)]
+SX=1.38
+BP=[(a,46+(b-46)*SX) for a,b in [(-300,46),(500,170),(1000,410),(1500,625),(1900,750),(2026,835)]]
 def X(yr):
     for (a,xa),(b,xb) in zip(BP,BP[1:]):
         if yr<=b: return xa+(yr-a)/(b-a)*(xb-xa)
     return BP[-1][1]
-XE=835; XL=857
+XE=BP[-1][1]; XL=XE+22; W=int(XL+223)
 o=[]
 def add(s): o.append(s)
 def esc(s): return html.escape(s,quote=False)
