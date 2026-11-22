@@ -1,26 +1,37 @@
-# turkic-git
+# <a href="https://commons.wikimedia.org/wiki/File:Flag_of_Gagauzia.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flag_of_Gagauzia.svg/120px-Flag_of_Gagauzia.svg.png" alt="Flag of Gagauzia" height="26"></a> Gagauz
 
-The history of the Turkic peoples, told as a git repository.
+`oghuz/gagauz`
 
-- `main` is the common Proto-Turkic / Common Turkic trunk. It ends in 840 CE, when the Uyghur Khaganate falls and the steppe trunk breaks apart.
-- Branches follow the standard linguistic grouping: `oghur/*` (Bulghar, today only Chuvash), `oghuz/*` (Turkish, Azerbaijani, Turkmen, Gagauz), `kipchak/*` (Kazakh, Kyrgyz, Tatar, Bashkir, Crimean Tatar), `karluk/*` (Uzbek, Uyghur) and `siberian/*` (Sakha, Tuvan, Khakas, Altai).
-- Merge commits mark peoples that formed from more than one line, for example Volga Bulgars + Kipchaks (Kazan Tatars), Karluk + Kipchak (Uzbeks), Yenisei Kyrgyz + Kipchak-speaking tribes (Kyrgyz).
-- `oghur/danube-bulgar` is an archived branch: the Danube Bulgars became Slavic-speaking.
-- `turkic-states` is an octopus merge for the Organization of Turkic States: cooperation between independent countries, not one state.
+| | |
+|---|---|
+| **Self-name** | Gagauz |
+| **Where they live today** | Gagauzia in southern Moldova; south-western Ukraine |
+| **Branch** | Oghuz: Southwestern Turkic, carried west by the Seljuks from the 11th century. |
 
-## Reading the dates
+Around 150,000 Orthodox Christian speakers of an Oghuz language close to Turkish. They settled in Bessarabia from 1812, coming from what is now north-eastern Bulgaria; their earlier origins are debated, with several competing theories. Gagauzia has been an autonomous region of Moldova since 1994.
 
-Git cannot store dates before 1970, so every commit's real historical year is in the subject line (`552 CE: ...`) and in a `Historical-Date:` trailer. The git timestamps are a scaled stand-in (one day per historical year, starting from 1970) that keeps the commits in the right order. "c." marks approximate dates.
+## Commits on this branch
 
-## Try it
+Each commit is one historical event.
 
-```
-git log --graph --oneline --all
-git log --oneline kipchak/kazakh
-git log --merges --oneline --all
-git tag -n1
-```
+- **1812**: Gagauz settle in southern Bessarabia (their earlier origins are debated)
+- **1994**: Gagauzia, an autonomous territorial unit of Moldova
 
-## Caveats
+Run `git log --oneline oghuz/gagauz` to see them together with the history they build on. The same list is in [`lineages/oghuz--gagauz.md`](lineages/oghuz--gagauz.md).
 
-This is a teaching metaphor. Peoples don't split as cleanly as branches: languages, dynasties and populations mixed constantly, and several origins here (Kazan Tatars, Kyrgyz, Gagauz) are still debated. The branches follow linguistic classification, not genetics or politics.
+## Images
+
+<a href="https://commons.wikimedia.org/wiki/File:Hederlez_in_Chi%C8%99in%C4%83u%2C_May_7_2017_%2815%29.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Hederlez_in_Chi%C8%99in%C4%83u%2C_May_7_2017_%2815%29.jpg/960px-Hederlez_in_Chi%C8%99in%C4%83u%2C_May_7_2017_%2815%29.jpg" alt="Gagauz celebrating Hederlez in Chișinău" height="230"></a> <a href="https://commons.wikimedia.org/wiki/File:Gagauz-children.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Gagauz-children.jpg" alt="Gagauz family, early 20th century" height="230"></a>
+
+1. Gagauz celebrating Hederlez in Chișinău. Gikü, [CC0](https://creativecommons.org/publicdomain/zero/1.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hederlez_in_Chi%C8%99in%C4%83u%2C_May_7_2017_%2815%29.jpg).
+2. Gagauz family, early 20th century. Danyalov, Public domain, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gagauz-children.jpg).
+
+## Read more
+
+- [Gagauz people](https://en.wikipedia.org/wiki/Gagauz_people) on Wikipedia
+- [Gagauz language](https://en.wikipedia.org/wiki/Gagauz_language) on Wikipedia
+- [Open this branch in the interactive graph](https://berkayozdemr.github.io/turkic/#gagauz)
+
+---
+
+Part of [turkic-git](https://github.com/berkayozdemr/turkic#readme), the history of the Turkic peoples told as a git repository. See every branch in the [interactive graph](https://berkayozdemr.github.io/turkic/). Flag: [Flag of Gagauzia](https://commons.wikimedia.org/wiki/File:Flag_of_Gagauzia.svg), via Wikimedia Commons. This is a teaching metaphor: branches follow the linguistic classification of the languages, not ancestry or politics, and peoples mixed far more than a graph shows.
